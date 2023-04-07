@@ -1,9 +1,10 @@
 /* See LICENSE file for copyright and license details. */
 
-static int topbar               = 1;		/* -b  option */
-static int borderpx             = 1;		/* -b  option */
-static unsigned int lines       = 5;		/* -l option  */
-static const char *prompt       = NULL;		/* -p  option */
+static int barheight			= 5;		/* bar height in pixels */
+static int topbar				= 1;		/* -b option */
+static int borderpx				= 5;		/* -bw option */
+static unsigned int lines		= 5;		/* -l option  */
+static const char *prompt		= NULL;		/* -p option */
 static const unsigned int alpha = 0xf0;		/* alpha value */
 
 /* -fn option overrides fonts[0]; default X11 font or font set */

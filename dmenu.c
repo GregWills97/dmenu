@@ -641,7 +641,8 @@ setup(void)
 	utf8 = XInternAtom(dpy, "UTF8_STRING", False);
 
 	/* calculate menu geometry */
-	bh = drw->fonts->h + 2;
+	bh = drw->fonts->h;
+	bh = barheight ? bh + barheight : bh + 2;
 	lines = MAX(lines, 0);
 	mh = (lines + 1) * bh;
 #ifdef XINERAMA
@@ -698,6 +699,8 @@ setup(void)
 	                    depth, CopyFromParent, visual,
 	                    CWOverrideRedirect | CWBackPixel | CWBorderPixel |
 						CWColormap | CWEventMask, &swa);
+	if (borderpx)
+		XSetWindowBorder(dpy, win, scheme[SchemeSel][ColBg].pixel);
 	XSetClassHint(dpy, win, &ch);
 
 
@@ -769,6 +772,8 @@ main(int argc, char *argv[])
 			colors[SchemeSel][ColFg] = argv[++i];
 		else if (!strcmp(argv[i], "-w"))   /* embedding window id */
 			embed = argv[++i];
+		else if (!strcmp(argv[i], "-bw"))
+			borderpx = atoi(argv[++i]); /* border width */
 		else
 			usage();
 
