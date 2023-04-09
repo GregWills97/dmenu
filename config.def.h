@@ -7,7 +7,7 @@ static int centered				= 1;		/* -c option */
 static int min_width			= 500;		/* min width when centered */
 static unsigned int lines		= 5;		/* -l option  */
 static const char *prompt		= NULL;		/* -p option */
-static const unsigned int alpha = 0xFA;		/* alpha value */
+static const unsigned int alpha = 0xF1;		/* alpha value */
 
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = { "Liberation Mono:style=Regular:size=10:antialias=true:autohint=true",
@@ -20,11 +20,15 @@ static const char *colors[SchemeLast][2] = {
 	/*     fg         bg       */
 	[SchemeNorm] = { "#bbbbbb", "#222222" },
 	[SchemeSel] = { "#eeeeee", "#005577" },
+	[SchemeSelHighlight] = { "#ffc978", "#005577" },
+	[SchemeNormHighlight] = { "#ffc978", "#222222" },
 	[SchemeOut] = { "#000000", "#00ffff" },
 };
 static const unsigned int alphas[SchemeLast][2] = {
 	[SchemeNorm] = { OPAQUE, alpha },
 	[SchemeSel] = { OPAQUE, alpha },
+	[SchemeSelHighlight] = { OPAQUE, alpha },
+	[SchemeNormHighlight] = { OPAQUE, alpha },
 	[SchemeOut] = { OPAQUE, alpha },
 };
 /*
