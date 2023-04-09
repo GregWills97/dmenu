@@ -9,7 +9,7 @@ static int fuzzy				= 1;		/* -F  option */
 static unsigned int lines		= 5;		/* -l option  */
 static unsigned int columns		= 1;		/* -g option  */
 static const char *prompt		= NULL;		/* -p option */
-static const unsigned int alpha = 0xF1;		/* alpha value */
+static const unsigned int alpha = 0xE9;		/* alpha value */
 
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = { "Liberation Mono:style=Regular:size=10:antialias=true:autohint=true",

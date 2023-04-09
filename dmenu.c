@@ -45,6 +45,9 @@ static char numbers[NUMBERSBUFSIZE] = "";
 static char text[BUFSIZ] = "";
 static char *embed;
 static int bh, mw, mh;
+static int xoff = 0; /* put dmenu at this x offset */
+static int yoff = 0; /* put dmenu at this y offset */
+static unsigned int dmw = 0; /* make dmenu this wide */
 static int inputw = 0, promptw;
 static int lrpad; /* sum of left and right padding */
 static size_t cursor;
@@ -852,9 +855,9 @@ setup(void)
 			x = info[i].x_org + ((info[i].width  - mw) / 2);
 			y = info[i].y_org + ((info[i].height - mh) / 2);
 		} else {
-			x = info[i].x_org;
-			y = info[i].y_org + (topbar ? 0 : info[i].height - mh);
-			mw = info[i].width;
+			x = info[i].x_org + xoff;
+			y = info[i].y_org + (topbar ? yoff : info[i].height - mh - yoff);
+			mw = (dmw>0 ? dmw : info[i].width);
 		}
 
 		XFree(info);
@@ -869,9 +872,9 @@ setup(void)
 			x = (wa.width  - mw) / 2;
 			y = (wa.height - mh) / 2;
 		} else {
-			x = 0;
-			y = topbar ? 0 : wa.height - mh;
-			mw = wa.width;
+			x = xoff;
+			y = topbar ? yoff : wa.height - mh - yoff;
+			mw = (dmw>0 ? dmw : wa.width);
 		}
 	}
 	promptw = (prompt && *prompt) ? TEXTW(prompt) - lrpad / 4 : 0;
@@ -942,6 +945,12 @@ main(int argc, char *argv[])
 			fuzzy = 0;
 		else if (!strcmp(argv[i], "-c"))   /* turns off centering */
 			centered = 0;
+		else if (!strcmp(argv[i], "-x"))   /* window x offset */
+			xoff = atoi(argv[++i]);
+		else if (!strcmp(argv[i], "-y"))   /* window y offset (from bottom up if -b) */
+			yoff = atoi(argv[++i]);
+		else if (!strcmp(argv[i], "-z"))   /* make dmenu this wide */
+			dmw = atoi(argv[++i]);
 		else if (!strcmp(argv[i], "-s")) { /* case-sensitive item matching */
 			fstrncmp = strncmp;
 			fstrstr = strstr;

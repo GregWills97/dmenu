@@ -32,6 +32,12 @@ dmenu \- dynamic menu
 .IR color ]
 .RB [ \-shf
 .IR color ]
+.RB [ \-x
+.IR xoffset ]
+.RB [ \-y
+.IR yoffset ]
+.RB [ \-z
+.IR width ]
 .RB [ \-w
 .IR windowid ]
 .P
@@ -113,6 +119,24 @@ defines the selected highlight foreground color.
 .TP
 .B \-v
 prints version information to stdout, then exits.
+.TP
+.BI \-x " xoffset"
+dmenu is placed at this offset measured from the left side of the monitor.
+Can be negative.
+If option
+.B \-m
+is present, the measurement will use the given monitor.
+.TP
+.BI \-y " yoffset"
+dmenu is placed at this offset measured from the top of the monitor.  If the
+.B \-b
+option is used, the offset is measured from the bottom.  Can be negative.
+If option
+.B \-m
+is present, the measurement will use the given monitor.
+.TP
+.BI \-z " width"
+sets the width of the dmenu window.
 .TP
 .BI \-w " windowid"
 embed into windowid.
