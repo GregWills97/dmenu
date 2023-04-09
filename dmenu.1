@@ -3,13 +3,17 @@
 dmenu \- dynamic menu
 .SH SYNOPSIS
 .B dmenu
-.RB [ \-bfsv ]
+.RB [ \-bcfFsv ]
+.RB [ \-g
+.IR columns ]
 .RB [ \-l
 .IR lines ]
 .RB [ \-m
 .IR monitor ]
 .RB [ \-p
 .IR prompt ]
+.RB [ \-bw
+.IR borderwidth ]
 .RB [ \-fn
 .IR font ]
 .RB [ \-nb
@@ -64,8 +68,11 @@ dmenu matches menu items case sensitively.
 .BI \-bw " borderwidth"
 set border width
 .TP
+.BI \-g " columns"
+dmenu lists items in a grid with the given number of columns.
+.TP
 .BI \-l " lines"
-dmenu lists items vertically, with the given number of lines.
+dmenu lists items in a grid with the given number of lines.
 .TP
 .BI \-m " monitor"
 dmenu is displayed on the monitor number supplied. Monitor numbers are starting

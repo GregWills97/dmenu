@@ -7,6 +7,7 @@ static int centered				= 1;		/* -c option */
 static int min_width			= 500;		/* min width when centered */
 static int fuzzy				= 1;		/* -F  option */
 static unsigned int lines		= 5;		/* -l option  */
+static unsigned int columns		= 5;		/* -g option  */
 static const char *prompt		= NULL;		/* -p option */
 static const unsigned int alpha = 0xF1;		/* alpha value */
 
